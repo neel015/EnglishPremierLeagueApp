@@ -1,0 +1,32 @@
+<div class="teamsTable">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Position</th>
+        <th scope="col">Name</th>
+        <th scope="col">Points</th>
+        <th scope="col">Played</th>
+        <th scope="col">Won</th>
+        <th scope="col">Drawn</th>
+        <th scope="col">Lost</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="teams">
+      <tr *ngFor="let team of teams">
+        <td>{{team.position}}</td>
+        <td>
+          <img src="{{team.logoUrl}}" class="teamLogo"> &nbsp;
+          <a class="teamName" (click)="getTeamDetail(team.teamId)">{{team.teamName}}</a>
+        </td>  
+        <td>{{team.points}}</td>
+        <td>{{team.matchesPlayed}}</td>
+        <td>{{team.matchesWon}}</td>
+        <td>{{team.matchesDrawn}}</td>
+        <td>{{team.matchesLost}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+

@@ -1,0 +1,29 @@
+<div class="teamDetail">
+  <div *ngIf="teamDetails" class="card">
+    <div class="card-header">
+      {{teamDetails.teamName}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Stadium: {{teamDetails.stadiumName}}</h5>
+      <p class="card-text">Players:</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Player Name</th>
+            <th scope="col">Player Age</th>
+            <th scope="col">Goals Scored</th>
+            <th scope="col">Country</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="teamDetails.players">
+          <tr *ngFor="let player of teamDetails.players">
+            <td>{{player.name}}</td>
+            <td>{{player.age}}</td>
+            <td>{{player.goalsInCareer}}</td>
+            <td>{{player.countryOfOrigin}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>    
+</div>

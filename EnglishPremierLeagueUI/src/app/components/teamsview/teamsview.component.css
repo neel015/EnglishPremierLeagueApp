@@ -1,0 +1,13 @@
+.teamsTable{
+    margin-top: 3rem;
+}
+
+.teamLogo{
+    width: 40px;
+    height: 40px;
+}
+
+.teamName{
+    color:blue;
+    cursor: pointer;
+}

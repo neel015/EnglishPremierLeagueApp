@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="../../../assets/images/epl.png" pstyle="width:30px;">
+        English Premier League
+    </a>
+    <button class="navbar-toggler" type="button"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link disabled">Welcome {{userName}}</a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-success" *ngIf="userHasLoggedIn" (click)="logout()" type="submit">Logout</button>
+    </div>
+</nav>
