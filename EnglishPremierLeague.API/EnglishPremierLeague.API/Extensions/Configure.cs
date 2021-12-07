@@ -16,7 +16,7 @@ namespace EnglishPremierLeague.API.Extensions
                 app.UseSwaggerUI(c => {
                     c.DocExpansion(DocExpansion.None);
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "EnglishPremierLeague.API v1");
-                    //c.OAuthUsePkce();
+                    c.OAuthUsePkce();
                 });
             }
         }
