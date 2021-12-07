@@ -22,7 +22,7 @@ namespace EnglishPremierLeague.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=EPLDB;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"");
         }
     }
 }

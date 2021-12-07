@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnglishPremierLeague.Data.Migrations
 {
     [DbContext(typeof(EnglishPremierLeagueDbContext))]
-    [Migration("20211206100923_initialcommit")]
-    partial class initialcommit
+    [Migration("20211207183025_initialsetup")]
+    partial class initialsetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,9 +116,6 @@ namespace EnglishPremierLeague.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Position")
                         .HasColumnType("int");
 
                     b.Property<string>("StadiumName")

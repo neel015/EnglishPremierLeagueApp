@@ -1,0 +1,178 @@
+<div class="addTeamForm">
+    <form [formGroup]="teamForm" (ngSubmit)="addTeam()">
+        <accordion [isAnimated]="true">
+            <accordion-group heading="Team Details" [isOpen]="true">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input 
+                                formControlName="teamName"
+                                id="teamName" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="tc.teamName.touched && tc.teamName.invalid && tc.teamName.errors">
+                                <span class="text-danger" *ngIf="tc.teamName.errors.required">Name is required.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="stadium">Stadium</label>
+                            <input 
+                                formControlName="stadium"
+                                id="stadium" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="tc.stadium.touched && tc.stadium.invalid && tc.stadium.errors">
+                                <span class="text-danger" *ngIf="tc.stadium.errors.required">Stadium Name is required.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="played">Matches Played</label>
+                            <input 
+                                formControlName="played"
+                                id="played" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="tc.played.touched && tc.played.invalid && tc.played.errors">
+                                <span class="text-danger" *ngIf="tc.played.errors.required">Matches played is required.</span>
+                                <span class="text-danger" *ngIf="tc.played.errors.pattern">Played is incorrect.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="col-4">
+                        <div class="form-group">
+                            <label for="won">Matches Won</label>
+                            <input 
+                                formControlName="won"
+                                id="won" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="tc.won.touched && tc.won.invalid && tc.won.errors">
+                                <span class="text-danger" *ngIf="tc.won.errors.required">Matches won is required.</span>
+                                <span class="text-danger" *ngIf="tc.won.errors.pattern">Matches won is incorrect.</span>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="col-4">
+                        <div class="form-group">
+                            <label for="points">Matches Drawn</label>
+                            <input 
+                                formControlName="drawn"
+                                id="drawn" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="tc.drawn.touched && tc.drawn.invalid && tc.drawn.errors">
+                                <span class="text-danger" *ngIf="tc.drawn.errors.required">Matches Drawn is required.</span>
+                                <span class="text-danger" *ngIf="tc.drawn.errors.pattern">Matches Drawn is incorrect.</span>
+                            </div>
+                        </div>                        
+                   </div>
+                   <div class="col-4">
+                        <div class="form-group">
+                            <label for="points">Matches Lost</label>
+                            <input 
+                                formControlName="lost"
+                                id="lost" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="tc.lost.touched && tc.lost.invalid && tc.lost.errors">
+                                <span class="text-danger" *ngIf="tc.lost.errors.required">Matches Lost is required.</span>
+                                <span class="text-danger" *ngIf="tc.lost.errors.pattern">Matches Lost is incorrect.</span>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label for="points">Logo</label>
+                            <input 
+                                formControlName="logo"
+                                id="logo" 
+                                type="file" 
+                                accept="image/*"
+                                (change)="logoUploaded($event)"
+                                class="form-control">
+                        </div>                        
+                    </div>
+                </div>                
+            </accordion-group>
+            <accordion-group heading="Player Details" [isOpen]="true">
+                <div *ngFor="let item of playersArray.controls; let i = index;">
+                    <div [formGroup]="getPlayerFormGroup(item)" class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="playerName">Name</label>
+                                <input 
+                                    formControlName="playerName"
+                                    id="playerName" 
+                                    type="text" 
+                                    class="form-control">
+                                <!-- <div *ngIf="item.playerName.touched && item.playerName.invalid">
+                                    <span class="text-danger" *ngIf="item.playerName.errors.required">Name is required.</span>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="goalsScored">Goals</label>
+                                <input 
+                                    formControlName="goalsScored"
+                                    id="goalsScored" 
+                                    type="text" 
+                                    class="form-control">
+                            </div>                       
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select 
+                                    formControlName="country"
+                                    id="country"  
+                                    class="form-control">
+                                    <option *ngFor="let country of countries" value="country.countryName">{{country.countryName}}</option>
+                                </select>
+                            </div>                       
+                        </div>  
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input 
+                                    formControlName="age"
+                                    id="age" 
+                                    type="text" 
+                                    class="form-control">    
+                            </div>                       
+                        </div>                          
+                        <div class="col-1">
+                            <button type="button" (click)="addPlayerFormControl()" class="btn btn-outline-success btn-sm playerBtn">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" (click)="removePlayerFormControl(i)" class="btn btn-outline-danger btn-sm playerBtn">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>                 
+                    </div>
+                </div>
+            </accordion-group>
+        </accordion>    
+        <div class="mt-4">
+            <div class="float-right">
+                <button class="btn btn-outline-success" type="submit">
+                    Save <i class="fa fa-save"></i>
+                </button>
+            </div>            
+        </div>
+    </form>
+</div>
+

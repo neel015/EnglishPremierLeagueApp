@@ -4,6 +4,7 @@ using EnglishPremierLeague.Data.Configuration;
 using EnglishPremierLeague.Domain.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,8 +33,13 @@ namespace EnglishPremierLeague.API
                     .AddApiVersions()
                     .AddAutoMapperProfiles()
                     .AddDomainServices()
-                    .AddDataDependencies()
-                    .AddBlobServices();
+                    .AddDataDependencies(Configuration)
+                    .AddBlobServices()
+                    .AddAzureClients(builder =>
+                    {
+                        builder.AddBlobServiceClient(Configuration.GetConnectionString("Storage"));
+                    });
+                    
 
         }
 

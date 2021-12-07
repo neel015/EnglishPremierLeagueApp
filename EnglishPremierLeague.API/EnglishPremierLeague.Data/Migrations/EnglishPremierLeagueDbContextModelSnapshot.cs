@@ -116,9 +116,6 @@ namespace EnglishPremierLeague.Data.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
-
                     b.Property<string>("StadiumName")
                         .HasColumnType("nvarchar(max)");
 

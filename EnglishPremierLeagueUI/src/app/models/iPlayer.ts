@@ -1,7 +1,7 @@
 export interface iPlayer{
-    playerId: number;
+    playerId?: number;
     goalsInCareer: number;
-    age: number;
+    age?: number;
     countryOfOrigin: string;
     name: string; 
 }

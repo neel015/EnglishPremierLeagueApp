@@ -2,7 +2,7 @@
 
 namespace EnglishPremierLeague.Data.Migrations
 {
-    public partial class initialcommit : Migration
+    public partial class initialsetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,7 +53,6 @@ namespace EnglishPremierLeague.Data.Migrations
                     MatchesDrawn = table.Column<int>(type: "int", nullable: false),
                     MatchesLost = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
-                    Position = table.Column<int>(type: "int", nullable: false),
                     StadiumName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TeamName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

@@ -46,10 +46,7 @@ namespace EnglishPremierLeague.API.Controllers.v1
         public IActionResult SaveTeam([FromBody] TeamRequest teamRequest)
         {
             var team = _mapper.Map<Team>(teamRequest);
-            byte[] logoContent = default;
-            if (teamRequest.Logo?.Length > 0)
-                logoContent = teamRequest.Logo.GetBytes();
-            _teamService.CreateTeam(team, logoContent);
+            _teamService.CreateTeam(team);
             return NoContent();
         }
 
@@ -69,9 +66,7 @@ namespace EnglishPremierLeague.API.Controllers.v1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult DeleteTeam(int teamId)
         {
-            var team = _unitOfWork.Teams.Get(teamId);
-            _unitOfWork.Teams.Remove(team);
-            _unitOfWork.Complete();
+            _teamService.DeleteTeam(teamId);
             return NoContent();
         }
 

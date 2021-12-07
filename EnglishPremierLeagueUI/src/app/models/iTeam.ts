@@ -1,13 +1,12 @@
 export interface iTeam{
     logoUrl?: string;
-    logo: Blob;    
+    logo?: string | ArrayBuffer | null;   
     matchesPlayed :number;
     matchesWon :number;
     matchesDrawn :number;
     matchesLost :number;
-    position: number;
-    points: number;
+    points?: number;
     stadiumName?: string;
-    teamId: number;
+    teamId?: number;
     teamName : string;
 }

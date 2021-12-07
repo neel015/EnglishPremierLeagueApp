@@ -9,6 +9,7 @@ namespace EnglishPremierLeague.Domain.Services.Interfaces
 {
     public interface ITeamService
     {
-        Task CreateTeam(Team team, byte[] teamLogo);
+        void CreateTeam(Team team);
+        void DeleteTeam(int teamId);
     }
 }

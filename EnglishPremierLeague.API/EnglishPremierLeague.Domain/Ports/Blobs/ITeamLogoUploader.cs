@@ -5,6 +5,6 @@ namespace EnglishPremierLeague.Domain.Ports.Blobs
 {
     public interface ITeamLogoUploader
     {
-        Task<string> UploadTeamLogo(Team team, byte[] logo);
+        string UploadTeamLogo(Team team);
     }
 }

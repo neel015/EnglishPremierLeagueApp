@@ -23,11 +23,7 @@ export class TeamsviewComponent implements OnInit {
     this.teamsService.getAllTeams().subscribe(teams=>{
       this.teams = teams;
       if(this.teams)
-        this.teams = this.teams.sort(s=> s.position);
-        this.teams.map(async team=>{
-          if(team.logoUrl)
-            team.logo = await this.getImage(team.logoUrl)
-        })
+        this.teams = this.teams.sort(s=> s.points ?? 0);
     },
     ()=>{
       alert("Something failed");
@@ -38,10 +34,11 @@ export class TeamsviewComponent implements OnInit {
       return await this.teamsService.getTeamLogo(url).toPromise();
   }
 
-  public getTeamDetail(id: number): void{
-    this.router.navigateByUrl(
-      `/teamDetail?teamId=${id}`
-    );
+  public getTeamDetail(id?: number): void{
+    if(id)
+      this.router.navigateByUrl(
+        `/teamDetail?teamId=${id}`
+      );
   }
 
 }

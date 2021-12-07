@@ -25,4 +25,14 @@ export class TeamsService{
     public getTeamLogo(url: string): Observable<Blob>{
         return this.httpClient.get(url, {responseType: "blob"});
     }
+
+    public deleteTeam(teamId: number): Observable<any>{
+        let url = `${this.apiBaseUrl}${endpoints.teamDetail}`;
+        url = url.replace("{teamId}", teamId.toString());
+        return this.httpClient.delete(url);
+    }
+
+    public addTeam(team: iTeamDetail): Observable<any>{
+        return this.httpClient.post(`${this.apiBaseUrl}${endpoints.teams}`,team);
+    }
 }

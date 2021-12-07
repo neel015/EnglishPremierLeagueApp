@@ -11,6 +11,11 @@ namespace EnglishPremierLeague.API.Models.v1.Request
     {
         public string TeamName { get; set; }
         public string StadiumName { get; set; }
-        public IFormFile Logo { get; set; }
+        public string Logo { get; set; }
+        public int MatchesPlayed { get; set; }
+        public int MatchesWon { get; set; }
+        public int MatchesDrawn { get; set; }
+        public int MatchesLost { get; set; }
+        public List<PlayerRequest> Players { get; set; }
     }
 }

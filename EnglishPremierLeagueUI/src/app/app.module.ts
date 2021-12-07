@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddTeamComponent } from './components/add-team/add-team.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { TeamsviewComponent } from './components/teamsview/teamsview.component';
 import { TeamsService } from './services/team.service';
@@ -15,17 +14,17 @@ import { MsalBroadcastService, MsalGuard, MsalInterceptor, MsalService, MSAL_GUA
 import { MSALInstanceFactory } from './config/auth/msalInstanceFactory';
 import { MSALGuardConfigFactory } from './config/auth/msalGuardConfigFactory';
 import { MSALInterceptorConfigFactory } from './config/auth/msalInterceptorConfigFactory';
-import { NoAccessComponent } from './components/no-access/no-access.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AddTeamComponent } from './components/addteam/addteam.component';
+import { CountriesService } from './services/countries.service';
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     TeamsviewComponent,
     AddTeamComponent,
-    TeamdetailComponent,
-    NoAccessComponent
+    TeamdetailComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     ReactiveFormsModule
   ],
   providers: [
+    CountriesService,
     TeamsService,
     { 
       provide: HTTP_INTERCEPTORS, 
@@ -52,10 +52,10 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
       provide: MSAL_INSTANCE,
       useFactory: MSALInstanceFactory
     },
-    {
-      provide: MSAL_GUARD_CONFIG,
-      useFactory: MSALGuardConfigFactory
-    },
+    // {
+    //   provide: MSAL_GUARD_CONFIG,
+    //   useFactory: MSALGuardConfigFactory
+    // },
     {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory

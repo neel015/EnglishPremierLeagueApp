@@ -17,11 +17,21 @@ namespace EnglishPremierLeague.Domain.Services.Implementation
             _uow = uow;
         }
 
-        public async Task CreateTeam(Team team, byte[] teamLogo)
+        public void CreateTeam(Team team)
         {
-            //var logoUrl = await _teamLogoUploader.UploadTeamLogo(team, teamLogo);
-           // team.LogoUrl = logoUrl;
+            var logoUrl = _teamLogoUploader.UploadTeamLogo(team);
+            team.LogoUrl = logoUrl;
+            team.Points = team.MatchesWon * 3 + team.MatchesDrawn * 1;
             _uow.Teams.Add(team);
+            _uow.Complete();
+        }
+
+        public void DeleteTeam(int teamId)
+        {
+            var players = _uow.Players.Find(p => p.TeamId == teamId);
+            _uow.Players.RemoveRange(players);
+            var team = _uow.Teams.Get(teamId);
+            _uow.Teams.Remove(team);
             _uow.Complete();
         }
     }

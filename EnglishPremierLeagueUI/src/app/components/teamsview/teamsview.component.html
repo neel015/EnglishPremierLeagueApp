@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody *ngIf="teams">
-      <tr *ngFor="let team of teams">
-        <td>{{team.position}}</td>
+      <tr *ngFor="let team of teams; let i = index">
+        <td>{{i+1}}</td>
         <td>
           <img src="{{team.logoUrl}}" class="teamLogo"> &nbsp;
           <a class="teamName" (click)="getTeamDetail(team.teamId)">{{team.teamName}}</a>
